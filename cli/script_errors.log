@@ -1,0 +1,9 @@
+[19-Nov-2014 23:00:12 UTC] PHP Notice:  Undefined index: REQUEST_URI in /var/www/framework/library/system/Router.php on line 88
+[19-Nov-2014 23:00:12 UTC] PHP Notice:  Undefined index: REQUEST_URI in /var/www/framework/library/system/Router.php on line 88
+[19-Nov-2014 23:00:12 UTC] PHP Notice:  Undefined index: REQUEST_URI in /var/www/framework/library/system/Router.php on line 88
+[19-Nov-2014 23:00:12 UTC] PHP Notice:  Undefined index: REQUEST_URI in /var/www/framework/library/system/Router.php on line 88
+[19-Nov-2014 23:01:18 UTC] PHP Notice:  Undefined index: REQUEST_URI in /var/www/framework/library/system/Router.php on line 90
+[19-Nov-2014 23:01:18 UTC] PHP Notice:  Undefined index: REQUEST_URI in /var/www/framework/library/system/Router.php on line 90
+[19-Nov-2014 23:01:18 UTC] PHP Notice:  Undefined index: REQUEST_URI in /var/www/framework/library/system/Router.php on line 90
+[19-Nov-2014 23:01:18 UTC] PHP Notice:  Undefined index: REQUEST_URI in /var/www/framework/library/system/Router.php on line 90
+[19-Nov-2014 23:02:19 UTC] PHP Notice:  Use of undefined constant APPLICATION_ENV - assumed 'APPLICATION_ENV' in /var/www/framework/cli/cli.php on line 19
