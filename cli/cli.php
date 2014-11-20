@@ -23,7 +23,7 @@ if(count($argv) > 1){
 \033[1;30;32mCLI Command Line Interface for Nectar \033[0m
 To run a command, type 'php cli.php [commandName]' then hit Enter
 \n
-Available Methods: \n";
+Available Commands: \n";
    
    foreach($commands AS $command){
        echo "\033[1;30;32m".$command['command'] ."\033[0m - ". $command['description']."\n";

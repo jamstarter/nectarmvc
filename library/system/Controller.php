@@ -14,7 +14,7 @@ class Controller{
 
 	function __construct($route,$params){
 		$this->_route = (object) $route;
-
+		
 		if(isset($_POST)){
 			$params = array_merge($params,$_POST);
 			$this->_post = $_POST;

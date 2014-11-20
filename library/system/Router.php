@@ -19,7 +19,7 @@ class Router{
 	public function dispatch($route){
 
 		$moduleName = strtolower($route['module']);
-		$controllerName = $route['controller']."Controller";
+		$controllerName = ucwords($route['controller'])."Controller";
 		$actionName = $route['action'];
 
 		$params = array();
@@ -29,7 +29,7 @@ class Router{
 				$params[$key] = $value;
 			}
 		}
-		
+
 			//Initialize Controller
 			$controller = new $controllerName($route,$params);
 			$controller->$actionName();
@@ -123,6 +123,7 @@ class Router{
 		}
 
 		asort($scoreRoutes);
+
 		if(empty($chosenRoute)){
 			foreach($scoreRoutes AS $name => $value){
 				$chosenRoute = $routes['routes'][$name];
