@@ -13,9 +13,14 @@ if(count($argv) > 1){
 
     $argv[1](@$argv[2]);
 } else {
-   echo "                                                                                                                                                                                                                      
-\033[1;30;32mCLI Command Line Interface for Nectar PHP Framework \033[0m
-Author: Brandon Swift 2014\n
+   echo "      
+    _   __          __            
+   / | / /__  _____/ /_____ ______
+  /  |/ / _ \/ ___/ __/ __ `/ ___/
+ / /|  /  __/ /__/ /_/ /_/ / /    
+/_/ |_/\___/\___/\__/\__,_/_/     
+                                
+\033[1;30;32mCLI Command Line Interface for Nectar \033[0m
 To run a command, type 'php cli.php [commandName]' then hit Enter
 \n
 Available Methods: \n";
