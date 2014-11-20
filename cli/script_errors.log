@@ -7,3 +7,10 @@
 [19-Nov-2014 23:01:18 UTC] PHP Notice:  Undefined index: REQUEST_URI in /var/www/framework/library/system/Router.php on line 90
 [19-Nov-2014 23:01:18 UTC] PHP Notice:  Undefined index: REQUEST_URI in /var/www/framework/library/system/Router.php on line 90
 [19-Nov-2014 23:02:19 UTC] PHP Notice:  Use of undefined constant APPLICATION_ENV - assumed 'APPLICATION_ENV' in /var/www/framework/cli/cli.php on line 19
+[20-Nov-2014 05:28:57 UTC] PHP Parse error:  syntax error, unexpected '"\n"' (T_CONSTANT_ENCAPSED_STRING), expecting ',' or ';' in /var/www/framework/cli/cliactions/generateModule.php on line 5
+[20-Nov-2014 05:32:01 UTC] PHP Parse error:  syntax error, unexpected 'public' (T_PUBLIC), expecting :: (T_PAAMAYIM_NEKUDOTAYIM) in /var/www/framework/cli/cliactions/generateModule.php on line 10
+[20-Nov-2014 05:39:03 UTC] PHP Warning:  file_put_contents(/var/www/framework/app/modules/sample/controllers/IndexController.php): failed to open stream: No such file or directory in /var/www/framework/cli/cliactions/generateModule.php on line 40
+[20-Nov-2014 05:49:55 UTC] PHP Warning:  mkdir(): No such file or directory in /var/www/framework/cli/cliactions/generateModule.php on line 78
+[20-Nov-2014 05:49:55 UTC] PHP Warning:  file_put_contents(/var/www/framework/app/modules/test/views/index/index.twig): failed to open stream: No such file or directory in /var/www/framework/cli/cliactions/generateModule.php on line 79
+[20-Nov-2014 06:14:36 UTC] PHP Notice:  Undefined variable: endTime in /var/www/framework/cli/cliactions/generateModule.php on line 29
+[20-Nov-2014 06:20:40 UTC] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /var/www/framework/cli/cliactions/generateModule.php on line 44
