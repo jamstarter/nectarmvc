@@ -1,3 +1,4 @@
+#!/usr/bin/env php
 <?php
 require('clibootstrap.php');
 $commands = array();
