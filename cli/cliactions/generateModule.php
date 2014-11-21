@@ -3,6 +3,11 @@ $commands[] = array('command'=>'generateModule [name]','description'=>'Generate 
 
 function generateModule($name){
 	$moduleName = slugify($name);
+
+	if(is_dir(APPLICATION_PATH."/app/modules/$moduleName")){
+		die("Module already exists! \n");
+	}
+
 	$folder = APPLICATION_PATH."/app/modules/$moduleName";
 
 	$startTime = time();

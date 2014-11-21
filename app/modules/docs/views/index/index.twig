@@ -1,0 +1,65 @@
+<style type='text/css'>
+.cli{
+	padding:10px;
+	background:#000;
+	color:#fff;
+	border-radius:10px;
+}
+</style>
+
+<div class='container'>
+<h1>Nectar Documentation</h1>
+
+<h2>Command Line Interface (CLI)</h2>
+<p>
+The command line interface will allow you to run scripts related to your application. CLI scripts have access to all models in all modules.
+<br><br>
+First, cd into the cli directory of your application.<br>
+<xmp class='cli'>> cd cli</xmp>
+<br>
+To see available methods, run the ./cli command.<br >
+<xmp class='cli'>> ./cli
+      
+    _   __          __            
+   / | / /__  _____/ /_____ ______
+  /  |/ / _ \/ ___/ __/ __ `/ ___/
+ / /|  /  __/ /__/ /_/ /_/ / /    
+/_/ |_/\___/\___/\__/\__,_/_/     
+                                
+CLI Command Line Interface for Nectar 
+To run a command, type 'php cli.php [commandName]' then hit Enter
+
+
+Available Commands: 
+generateModule [name] - Generate a skeleton module
+testCLI - Test the CLI
+</xmp>
+<br>
+To run a command, use the command with the ./cli command.<br>
+<xmp class='cli'>> ./cli testCLI
+
+
+ CLI WORKS!!! </xmp>
+</p>
+
+<h2>Generating a Module with the CLI</h2>
+You can generate a skeleton module by running the following command, replace "myModule" with the name of your new module.<br>
+<xmp class='cli'>> ./cli generateModule myModule</xmp>
+<br>
+You will be presented with the results and given a URI to use to view the first view of your module in your browser.<br>
+<xmp class='cli'>> ./cli generateModule myModule
+
+
+Generating Module mymodule... 
+
+Creating Directory... 
+Creating Controller... 
+Creating Model... 
+Creating View... 
+Creating Routes... 
+Creating Folder for SQL... 
+mymodule created in /var/www/framework/app/modules/mymodule 
+Complete.
+
+Navigate to /mymodule/index to view your new module!</xmp>
+</div>
