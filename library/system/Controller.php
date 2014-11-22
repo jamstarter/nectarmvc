@@ -61,7 +61,7 @@ class Controller{
 
 			$content = $twigView->render(strtolower($this->_route->action).'.twig', (Array)$this->view);
 
-			echo $twig->render($this->_layout.'.twig', array_merge(array('content'=>$content),(array)$this->view));
+			echo $twig->render($this->_layout.'.twig', array_merge(array('content'=>$content,'server'=>$_SERVER),(array)$this->view));
 		} else {
 			$loaderView = new \Twig_Loader_Filesystem(APPLICATION_PATH.'/app/modules/'.strtolower($this->_route->module).'/views/'.strtolower($this->_route->controller));
 			$twigView = new \Twig_Environment($loaderView);
