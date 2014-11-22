@@ -1,0 +1,8 @@
+tables:
+  table: testusers
+  primary_key: id
+  fields:
+    id: int(11) AUTO_INCREMENT
+    email: varchar(255)
+    password: varchar(255)
+    date_created: DATETIME DEFAULT CURRENT_TIMESTAMP

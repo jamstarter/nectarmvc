@@ -1,4 +1,5 @@
 <?php
+namespace system;
 
 class Router{
 
@@ -19,7 +20,7 @@ class Router{
 	public function dispatch($route){
 
 		$moduleName = strtolower($route['module']);
-		$controllerName = ucwords($route['controller'])."Controller";
+		$controllerName = $moduleName.'\\controllers\\'.ucwords($route['controller'])."Controller";
 		$actionName = $route['action'];
 
 		$params = array();

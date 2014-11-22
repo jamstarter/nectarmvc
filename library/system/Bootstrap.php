@@ -7,7 +7,7 @@ class Bootstrap{
 	function run(){
 
 		//load router
-		$router = new Router();
+		$router = new system\Router();
 		$router->route();
 	}
 

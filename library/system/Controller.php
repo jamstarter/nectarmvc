@@ -1,4 +1,6 @@
 <?php
+namespace system;
+
 /**
 * Main controller all other controllers extend
 */
@@ -55,18 +57,18 @@ class Controller{
 
 	function initView(){
 		if($this->_layout <> 'none'){
-			$loader = new Twig_Loader_Filesystem(APPLICATION_PATH.'/app/layouts');
-			$twig = new Twig_Environment($loader);
+			$loader = new \Twig_Loader_Filesystem(APPLICATION_PATH.'/app/layouts');
+			$twig = new \Twig_Environment($loader);
 
-			$loaderView = new Twig_Loader_Filesystem(APPLICATION_PATH.'/app/modules/'.strtolower($this->_route->module).'/views/'.strtolower($this->_route->controller));
-			$twigView = new Twig_Environment($loaderView);
+			$loaderView = new \Twig_Loader_Filesystem(APPLICATION_PATH.'/app/modules/'.strtolower($this->_route->module).'/views/'.strtolower($this->_route->controller));
+			$twigView = new \Twig_Environment($loaderView);
 
 			$content = $twigView->render(strtolower($this->_route->action).'.twig', (Array)$this->view);
 
 			echo $twig->render($this->_layout.'.twig', array_merge(array('content'=>$content),(array)$this->view));
 		} else {
-			$loaderView = new Twig_Loader_Filesystem(APPLICATION_PATH.'/app/modules/'.strtolower($this->_route->module).'/views/'.strtolower($this->_route->controller));
-			$twigView = new Twig_Environment($loaderView);
+			$loaderView = new \Twig_Loader_Filesystem(APPLICATION_PATH.'/app/modules/'.strtolower($this->_route->module).'/views/'.strtolower($this->_route->controller));
+			$twigView = new \Twig_Environment($loaderView);
 
 			$content = $twigView->render(strtolower($this->_route->action).'.twig', (Array)$this->view);
 			echo $content;
