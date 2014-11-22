@@ -1,5 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Satisfy);
-@import url(http://fonts.googleapis.com/css?family=Arimo);
+@import url(http://fonts.googleapis.com/css?family=Arimo:400,700,400italic,700italic);
 html,body{
 font-family: 'Arimo', sans-serif;
 background:#fff;
@@ -64,6 +64,7 @@ h3{
 .navbar-inverse{
 	background:#011a2e;
 	padding:10px;
+	border:0;
 	border-radius:0;
 }
 .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>.active>a:focus{

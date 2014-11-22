@@ -38,9 +38,13 @@
   </div><!-- /.container-fluid -->
 </nav>
 </div>
+{% if server['REQUEST_URI'] != '/' %}
 <div class='main_content container'>
+{% endif %}
 	{{content|raw}}
+{% if server['REQUEST_URI'] != '/' %}
 </div>
+{% endif %}
 
 </body>
 </html>
