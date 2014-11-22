@@ -112,7 +112,7 @@ function generateSql($path){
 }
 
 function generateRoutes($path,$moduleName){
-	$contents="routes.$moduleName.route = /$moduleName/index
+	$contents="routes.$moduleName.route = /$moduleName
 routes.$moduleName.module = $moduleName
 routes.$moduleName.controller = Index
 routes.$moduleName.action = index";
