@@ -38,12 +38,8 @@ class Controller{
 		$application = $config->getConfig();
 		$this->_config = $application;
 
-		$settings = array();
-		foreach($application AS $key => $value){
-			$keyParts = explode(".",$key);
-			$settings[$keyParts[0]][$keyParts[1]][$keyParts[2]] = $value;
-		}
-		$this->_application = (object) $settings;
+		
+		$this->_application = $application;
 
 	}
 
