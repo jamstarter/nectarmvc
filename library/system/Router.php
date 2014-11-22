@@ -32,14 +32,14 @@ class Router{
 		}
 
 			//Initialize Controller
-			$controller = new $controllerName($route,$params);
-			$controller->$actionName();
+		$controller = new $controllerName($route,$params);
+		$controller->$actionName();
 
 			//Set View script
-			$controller->setViewPath(APPLICATION_PATH."/app/modules/".$moduleName."/".strtolower($controllerName));
-			$controller->setView(strtolower($actionName).".twig");
+		$controller->setViewPath(APPLICATION_PATH."/app/modules/".$moduleName."/".strtolower($controllerName));
+		$controller->setView(strtolower($actionName).".twig");
 
-			$controller->initView();
+		$controller->initView();
 		
 
 	}
@@ -57,7 +57,7 @@ class Router{
 		
 		//Parse routes config file
 		$rawRoutes = parse_ini_file(APPLICATION_PATH."/app/routes.ini", true, INI_SCANNER_NORMAL );
-	
+		
 		$module_files = scandir(APPLICATION_PATH.'/app/modules/');
 		$moduleNames = array();
 		foreach($module_files AS $moduleName){
@@ -104,7 +104,7 @@ class Router{
 						$scoreRoutes[$name] = @$scoreRoutes[$name] + 1;
 
 						if(strstr(@$thisRouteSplit[$i],':')){
-						
+							
 							$routes['routes'][$name][str_replace(":","",@$thisRouteSplit[$i])] = @$requestURI[$i];
 						}
 
@@ -128,7 +128,7 @@ class Router{
 		if(empty($chosenRoute)){
 			foreach($scoreRoutes AS $name => $value){
 
-					$chosenRoute = $routes['routes'][$name];
+				$chosenRoute = $routes['routes'][$name];
 
 			}
 		}

@@ -16,7 +16,7 @@
  *			// 'extensions' => ['.php', '.php4', '.php5'], // example of multiple extensions
  *			// use namespace if autoloader function is in namespace for registering autoloader
  *			'namespace' => 'My\Namespace',
-			'verbose' => false // will print internal messages (for debugging)
+ *			'verbose' => false // will print internal messages (for debugging)
  *		]]);
  *
  *		// add class paths to autoload
@@ -62,14 +62,14 @@ function autoloader($class_paths = NULL, $use_base_dir = true)
 	static $is_init = false;
 
 	static $conf = [
-		'basepath' => '',
-		'debug' => false,
+	'basepath' => '',
+	'debug' => false,
 		'extensions' => ['.php'], // multiple extensions ex: ['.php', '.class.php']
 		'namespace' => '',
 		'verbose' => false
-	];
+		];
 
-	static $paths = [];
+		static $paths = [];
 
 	if(\is_null($class_paths)) // autoloader(); returns paths (for debugging)
 	{
@@ -103,7 +103,7 @@ function autoloader($class_paths = NULL, $use_base_dir = true)
 
 	if(!\is_array($class_paths)) // autoload class
 	{
-	
+
 		// class with namespaces, ex: 'MyPack\MyClass' => 'MyPack/MyClass' (directories)
 		$class_path = \str_replace('\\', \DIRECTORY_SEPARATOR, $class_paths);
 
@@ -132,7 +132,7 @@ function autoloader($class_paths = NULL, $use_base_dir = true)
 						if($conf['verbose'])
 						{
 							echo '<div>' . __METHOD__ . ': autoloaded class "' . $path
-								. $class_path . $ext . '"</div>';
+							. $class_path . $ext . '"</div>';
 						}
 
 						return true;
@@ -142,7 +142,7 @@ function autoloader($class_paths = NULL, $use_base_dir = true)
 				if($conf['verbose'])
 				{
 					echo '<div>' . __METHOD__ . ': failed to autoload class "' . $path
-						. $class_path . $ext . '"</div>';
+					. $class_path . $ext . '"</div>';
 				}
 			}
 		}
@@ -159,7 +159,7 @@ function autoloader($class_paths = NULL, $use_base_dir = true)
 			{
 				$tmp_path = ( $use_base_dir ? \rtrim($conf['basepath'], \DIRECTORY_SEPARATOR)
 					. \DIRECTORY_SEPARATOR : '' ) . \trim(\rtrim($path, \DIRECTORY_SEPARATOR))
-					. \DIRECTORY_SEPARATOR;
+				. \DIRECTORY_SEPARATOR;
 
 				if(!\in_array($tmp_path, $paths))
 				{
@@ -202,23 +202,23 @@ foreach($module_files AS $moduleName){
 	}
 }
 foreach($moduleNames AS $module){
-autoloader(array( 
-      APPLICATION_PATH.'/app/modules/'.$module.'/controllers', 
-      APPLICATION_PATH.'/app/modules',
-      APPLICATION_PATH.'/app/modules/'.$module,
-      APPLICATION_PATH.'/app/modules/'.$module.'/models', 
-      APPLICATION_PATH.'/library/vendors/Doctrine',
-      APPLICATION_PATH.'/library/vendors', 
-      APPLICATION_PATH.'/library',
-)); 
+	autoloader(array( 
+		APPLICATION_PATH.'/app/modules/'.$module.'/controllers', 
+		APPLICATION_PATH.'/app/modules',
+		APPLICATION_PATH.'/app/modules/'.$module,
+		APPLICATION_PATH.'/app/modules/'.$module.'/models', 
+		APPLICATION_PATH.'/library/vendors/Doctrine',
+		APPLICATION_PATH.'/library/vendors', 
+		APPLICATION_PATH.'/library',
+		)); 
 }
 
 
 
 set_include_path(implode(PATH_SEPARATOR, array(
-    realpath(APPLICATION_PATH.'/library/vendors'),
-    get_include_path(),
-)));
+	realpath(APPLICATION_PATH.'/library/vendors'),
+	get_include_path(),
+	)));
 
 
 
