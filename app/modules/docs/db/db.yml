@@ -1,0 +1,33 @@
+tables:
+  users:
+    primary_key: id
+    columns:
+      id:
+        type: int(11)
+        extra: AUTO_INCREMENT
+      email: 
+        type: varchar(255)
+      password:
+        type: varchar(255)
+      first_name:
+        type: varchar(255)
+      last_name:
+        type: varchar(255)
+      street: 
+        type: varchar(255)
+      date_created:
+        type: TIMESTAMP
+        default: CURRENT_TIMESTAMP
+  testusers2:
+    primary_key: id
+    columns:
+      id:
+        type: int(11)
+        extra: AUTO_INCREMENT
+      email: 
+        type: varchar(255)
+      password:
+        type: varchar(255)
+      date_created:
+        type: TIMESTAMP
+        default: CURRENT_TIMESTAMP
