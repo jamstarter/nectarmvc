@@ -20,7 +20,7 @@ function updatedb($module){
 	}
 	foreach($modules AS $module){
 		$modulePath = APPLICATION_PATH.'/app/modules/'.$module;
-		$dbMapPath = trim($modulePath."/db/db.yaml");
+		$dbMapPath = trim($modulePath."/db/db.yml");
 
 		try{
 		$dbMap = Yaml::parse(file_get_contents($dbMapPath));
