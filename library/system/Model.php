@@ -6,11 +6,10 @@ class Model{
 	public $_db;
 
 	function __construct(){
-		if(file_exists(APPLICATION_PATH."/../application.ini")){
-			$application =  parse_ini_file(APPLICATION_PATH."/../application.ini", true, INI_SCANNER_NORMAL );
-		} else {
-			$application =  parse_ini_file(APPLICATION_PATH."/app/application.ini", true, INI_SCANNER_NORMAL );
-		}
+		//get config
+		$config = new Config;
+		$application = $config->getConfig();
+
 		$settings = (object) array();
 		foreach($application AS $key => $value){
 			$keyParts = explode(".",$key);

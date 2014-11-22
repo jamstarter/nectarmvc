@@ -126,7 +126,9 @@ class Router{
 
 		if(empty($chosenRoute)){
 			foreach($scoreRoutes AS $name => $value){
-				$chosenRoute = $routes['routes'][$name];
+
+					$chosenRoute = $routes['routes'][$name];
+
 			}
 		}
 

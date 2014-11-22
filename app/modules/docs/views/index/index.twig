@@ -8,41 +8,13 @@
 </style>
 
 <div class='container'>
-<h1>Nectar Documentation</h1>
+<h1>Documentation</h1>
 
-<a href="https://github.com/jamstarter/nectarmvc/archive/master.zip"><input type='button' class='btn btn-primary btn-lg' value='Download Latest'></a>
+<h2>Get Nectar, it's sweet!</h2>
+<a href="https://github.com/jamstarter/nectarmvc/archive/master.zip"><input type='button' class='btn btn-danger btn-lg' value='Download Latest'></a>
 
-<h2>Setting up Apache</h2>
-Before you can start to use Nectar, you'll need to setup apache with the proper settings.<br>
-In your apache configuration file, make sure you have a section that looks like this, pointing to the /public folder.<br>
-<xmp>
-<VirtualHost *:80>
-        ServerName mydomain.com
-        ServerAdmin webmaster@localhost
-        DocumentRoot /var/www/myapplication/public
-
-        <Directory /var/www/myapplication/public>
-                Options Indexes FollowSymLinks
-                AllowOverride All
-        </Directory>
-</VirtualHost>
-</xmp>
-<br>
-<h3>Enable Mod Rewrite</h3>
-You will also need to enable mod rewrite so you can have configurable URLs:
-<xmp>a2enmod rewrite</xmp>
-<br>
-<h2>Setup Your Database</h2>
-Edit <b>application.ini</b> and input your database credentials<br>
-<xmp>;======================================
-; Database Settings
-;======================================
-resources.db.adapter = PDO_MYSQL
-resources.db.isDefaultAdapter = true
-resources.db.host = localhost
-resources.db.username = dbuser
-resources.db.password = **********
-resources.db.database = mydatabase</xmp>
+<br><br>
+To get started, download the latest version of Nectar and upload it to your web server. The location doesn't matter, but for the purposes of this documentation, we're going to assume you upload it to /var/www/nectar.
 <br>
 <h2>Directory Structure</h2>
 <p>Here's an overview of the directory structure of Nectar. The default 'docs' modules comes included with the framework.</p>
@@ -56,7 +28,7 @@ app
         |_routes.ini     => Routes for the modules
       |_controllers      => Controllers for the module
       |_models           => Models for the module
-      |_sql              => SQL files to run on migrate
+      |_db               => Database maps for your module
       |_views            => Views for your module (Twig)
   |_application.ini      => Global application configuration (database,api keys, etc)
   |_routes.ini           => Global routes (combined with module routes)
@@ -70,26 +42,99 @@ library                  => System / Third-party libraries
 public                   => Public Folder
   |_.htaccess            => .htaccess file (rewrite rules)
   |_index.php            => Front Controller
+  |_css                  => CSS files go here
+  |_js                   => JavaScript files go here
+  |_images               => Image files go here
 </xmp>
+<br>
+
+<h2>Configure Apache</h2>
+Before you can start to use Nectar, you'll need to setup apache with the proper settings. In your apache configuration file, make sure you have a section that looks like this, pointing to the /public folder. Depending on your operating system, the apache config file will be located in different places. If you are unsure, checkout <a href="http://wiki.apache.org/httpd/DistrosDefaultLayout" target="_blank">http://wiki.apache.org/httpd/DistrosDefaultLayout</a><br>
+<xmp>
+<VirtualHost *:80>
+        ServerName mydomain.com
+        ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/nectar/public
+
+        <Directory /var/www/nectar/public>
+                Options Indexes FollowSymLinks
+                AllowOverride All
+        </Directory>
+</VirtualHost>
+</xmp>
+<br>
+<h3>Enable Mod Rewrite</h3>
+You will also need to enable mod rewrite so you can have configurable URLs:
+<xmp class='cli'>> a2enmod rewrite</xmp>
+<br>
+<h2>Configure Your Environment</h2>
+You can setup your application to run under different environments. This helps if you want to develop using different settings than your production application, setup a staging server, or if you have multiple developers who all want their own settings. To setup your environment, you'll need to add a file called "environment.conf" beside the top-level directory for your application. This means if your Nectar installation is at /var/www/nectar, the the environment.conf file should reside at /var/www/environment.conf. This will keep the environment.conf file from being committed into version control with the rest of your codebase. If you choose not to configure your environment, it will default to 'production'.
 <br><br>
-<h2>Accessing Variables From a Controller</h2>
-You can access $_POST and $_GET variables from within a controller using the following:
+
+The <b>environment.conf</b> file should have the name of the environment and nothing else.
+<br><br>
+<b>Sample environment.conf file:</b>
+<xmp class='cli'>production</xmp>
+<br>
+<h2>Setup Your Database</h2>
+Edit <b>application.ini</b> and input your database credentials for each environment you will be using.<br>
+<xmp>[production]
+;======================================
+; Production Database Settings
+;======================================
+resources.db.adapter = PDO_MYSQL
+resources.db.isDefaultAdapter = true
+resources.db.host = localhost
+resources.db.username = dbuser
+resources.db.password = **********
+resources.db.database = mydatabase
+
+[staging]
+;======================================
+; Staging Database Settings
+;======================================
+resources.db.adapter = PDO_MYSQL
+resources.db.isDefaultAdapter = true
+resources.db.host = localhost
+resources.db.username = dbuser
+resources.db.password = **********
+resources.db.database = stagedatabase
+
+[development]
+;======================================
+; Staging Database Settings
+;======================================
+resources.db.adapter = PDO_MYSQL
+resources.db.isDefaultAdapter = true
+resources.db.host = localhost
+resources.db.username = dbuser
+resources.db.password = **********
+resources.db.database = developmentdatabase</xmp>
+<br>
+
+<h2>Accessing Global Variables / Helpers From a Controller</h2>
+You can access $_POST and $_GET variables as well as some other helpful variables from within a controller using the following:
 <xmp class='cli'>$post = $this->_post;     // Get $_POST variables
 $get = $this->_get;       // Get $_GET variables
 $params = $this->_params; // Get a combo of $_POST and $_GET
+$config = $this->_config; // Get application config for the current environment
 </xmp>
-<br><br>
-
-<h2>Sending data to the view</h2>
+<br>
+<h2>Global Constants</h2>
+In addition to global variables, there are some constants defined by Nectar that you can use throughout your application.<br>
+<xmp class='cli'>echo APPLICATION_PATH;    //outputs the full path to the Nectar installation ie. /var/www/nectar
+echo APPLICATION_ENV;     //outputs the environment name ie. production, staging, development, etc</xmp>
+<br>
+<h2>Sending Data to the View</h2>
 You can send data to a view by using $this->view from the controller method corresponding to your view.
 <xmp class='cli'>$this->view->myVar = "Hello";
 $this->view->user = $usersModel->getById(35);</xmp>
 <br>
 In the view twig file, you can use that variable like this:
 <xmp class='cli'>{% verbatim %}{{myVar}}         //outputs "Hello"
-{{user.email}}    //outputs user object {% endverbatim %}</xmp>
+{{user.email}}    //outputs "james@bond.com" {% endverbatim %}</xmp>
 
-<br><br>
+<br>
 <h2>Command Line Interface (CLI)</h2>
 <p>
 The command line interface will allow you to run scripts related to your application. CLI scripts have access to all models in all modules.
@@ -107,7 +152,7 @@ To see available methods, run the ./cli command.<br >
 /_/ |_/\___/\___/\__/\__,_/_/     
                                 
 CLI Command Line Interface for Nectar 
-To run a command, type 'php cli.php [commandName]' then hit Enter
+To run a command, type './cli [commandName]' then hit Enter
 
 
 Available Commands: 
@@ -127,7 +172,7 @@ If you received an error when you ran ./cli, you may need to set the cli file to
 
 </p>
 
-
+<br>
 <h2>Generating a Module with the CLI</h2>
 You can generate a skeleton module by running the following command, replace "myModule" with the name of your new module.<br>
 <xmp class='cli'>> ./cli generateModule myModule</xmp>
@@ -143,9 +188,50 @@ Creating Controller...
 Creating Model... 
 Creating View... 
 Creating Routes... 
-Creating Folder for SQL... 
+Creating Folder for Database Maps... 
 mymodule created in /var/www/framework/app/modules/mymodule 
 Complete.
 
 Navigate to /mymodule/index to view your new module!</xmp>
+<br>
+
+<h2>Creating New CLI Scripts</h2>
+Use the testCLI.php file as a template to create new scripts. The $commands array sets what is displayed in the CLI menu and the function is what runs when a cli command is executed.<br>
+<xmp class='cli'><?php
+$commands[] = array('command'=>'testCLI','description'=>'Test the CLI');
+
+function testCLI(){
+  echo "\n\n CLI WORKS!!! \n\n";
+
+}</xmp>
+<br>
+You can optionally pass a variable into the funciton as well:
+<xmp class='cli'><?php
+$commands[] = array('command'=>'testCLI','description'=>'Test the CLI');
+
+function testCLI($myVar){
+  echo "\n\n $myVar \n\n";
+
+}</xmp><br>
+Then run the command in the CLI:
+<xmp class='cli'>./cli testCLI hello</xmp>
+<br> Will output:
+<xmp class='cli'>
+hello
+
+</xmp>
+<br>
+<h2>Disabling the Layout</h2>
+You may need to disabled your layout if you want to send AJAX requests to a controller. You can disable your layout for a specific action in a controller like this:<br>
+<xmp class='cli'><?php
+
+class IndexController extends Controller{
+
+
+  function index(){
+      $this->_layout = 'none';
+  }
+}</xmp>
+
+<br><br><br><br>
 </div>
