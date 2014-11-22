@@ -21,11 +21,11 @@ function generateModule($name){
 
 	//create Controller
 	echo "Creating Controller... \n";
-	generateController($folder."/controllers");
+	generateController($folder."/controllers",$moduleName);
 
 	//create Model
 	echo "Creating Model... \n";
-	generateModel($folder."/models");
+	generateModel($folder."/models",$moduleName);
 
 	//create View
 	echo "Creating View... \n";
@@ -57,14 +57,15 @@ function createDirectory($folder){
 	}
 }
 
-function generateController($path){
+function generateController($path,$module){
 	$contents="<?php
+namespace $module\controllers;
+use system\Controller as NectarController;
 
-class IndexController extends Controller{
-
+class IndexController extends NectarController{
 
 	function index(){
-		\$sampleModel = new SampleModel();
+		$sampleModel = new \\$module\models\MyModel;
 		\$this->view->name = \$sampleModel->getName();
 	}
 }";
@@ -74,12 +75,12 @@ class IndexController extends Controller{
 	}
 }
 
-function generateModel($path){
+function generateModel($path,$module){
 	$contents="<?php
+namespace $module\models;
+use system\Model as NectarModel;
 
-class SampleModel extends Model{
-
-
+class SampleModel extends NectarModel{
 
 	function getName(){
 		return 'World';
@@ -105,7 +106,8 @@ function generateView($path,$moduleName){
 function generateSql($path){
 	if(!is_dir($path)){
 		mkdir($path,0777,true);
-//		file_put_contents($path."/index.twig", $contents);
+		$contents = "";
+		file_put_contents($path."/db.yaml", $contents);
 	}
 }
 

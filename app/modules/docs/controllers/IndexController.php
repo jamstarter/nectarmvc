@@ -1,6 +1,9 @@
 <?php
 
-class IndexController extends Controller{
+namespace docs\controllers;
+use system\Controller as NectarController;
+
+class IndexController extends NectarController{
 
 
 	function index(){
