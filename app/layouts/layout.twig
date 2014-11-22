@@ -2,7 +2,7 @@
 <head>
 
 <title>Nectar : Modular MVC Framework for PHP</title>
-
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <link href="/css/global.css" rel='stylesheet'>
@@ -10,14 +10,33 @@
 </head>
 <body>
 <div class='header'>
-	<div class='container'>
-		<a href="/">
-		<div class="text">
-			<h1>Nectar</h1>
-			<h4>Modular MVC Framework</h4>
-		</div>
-		</a>
-	</div>
+
+	<nav class="navbar navbar-inverse" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/"><img src="/images/nectar_logo.png" class='logo' ></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+      	<li {% if server['REQUEST_URI'] == '/' %}class='active'{% endif %}><a href="/">What is Nectar?</a></li>
+      	<li {% if '/modules' in server['REQUEST_URI'] %}class='active'{% endif %}> <a href="/modules">Modules</a></li>
+        <li {% if '/docs' in server['REQUEST_URI'] %}class='active'{% endif %}> <a href="/docs">Documentation / Download</a></li>
+
+      </ul>
+    
+      
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
 </div>
 <div class='main_content container'>
 	{{content|raw}}
