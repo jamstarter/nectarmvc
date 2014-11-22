@@ -1,0 +1,42 @@
+<br>
+<a href="/docs">Back to Docs</a>
+
+<h1>Helpers, Variables & Views</h1>
+<h2>Accessing Global Variables / Helpers From a Controller</h2>
+You can access $_POST and $_GET variables as well as some other helpful variables from within a controller using the following:
+<xmp class='cli'>$post = $this->_post;     // Get $_POST variables
+$get = $this->_get;       // Get $_GET variables
+$params = $this->_params; // Get a combo of $_POST and $_GET
+$config = $this->_config; // Get application config for the current environment
+</xmp>
+<br>
+<h2>Global Constants</h2>
+In addition to global variables, there are some constants defined by Nectar that you can use throughout your application.<br>
+<xmp class='cli'>echo APPLICATION_PATH;    //outputs the full path to the Nectar installation ie. /var/www/nectar
+echo APPLICATION_ENV;     //outputs the environment name ie. production, staging, development, etc</xmp>
+<br>
+<h2>Sending Data to the View</h2>
+You can send data to a view by using $this->view from the controller method corresponding to your view.
+<xmp class='cli'>$this->view->myVar = "Hello";
+$this->view->user = $usersModel->getById(35);</xmp>
+<br>
+In the view twig file, you can use that variable like this:
+<xmp class='cli'>{% verbatim %}{{myVar}}         //outputs "Hello"
+{{user.email}}    //outputs "james@bond.com" {% endverbatim %}</xmp>
+
+<br>
+
+
+<h2>Disabling the Layout</h2>
+You may need to disabled your layout if you want to send AJAX requests to a controller. You can disable your layout for a specific action in a controller like this:<br>
+<xmp class='cli'><?php
+
+class IndexController extends Controller{
+
+
+  function index(){
+      $this->_layout = 'none';
+  }
+}</xmp>
+
+<br><br><br><br>

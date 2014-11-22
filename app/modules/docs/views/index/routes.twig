@@ -1,0 +1,27 @@
+<br>
+<a href="/docs">Back to Docs</a>
+
+<h1>How To Use Routes</h1>
+
+<h2>Route Basics</h2>
+To setup custom routes in a module, edit the routes.ini file located within the module's directory. Each route must have a unique name and a unique value for the route. While you can include routes to other modules inside any routes.ini file, it defeats the purpose of modular development. If you find you need to register a route outside of a module for some reason, you can add it to the main route.ini file located in the /app folder.
+
+<br><br>
+Here is an example of a route called 'myroute' defined for the module 'mymodule'.
+<xmp class='cli'>routes.myroute.route = /my-awesome-page/mypage
+routes.myroute.module = mymodule
+routes.myroute.controller = Index
+routes.myroute.action = index</xmp>
+
+<h2>Using Variables in a Route</h2>
+You may find that you'd like to use variables in your routes. This can be done by prefacing the variable name with ':'.
+<br><br>
+Here is a sample route for a user's profile page using a variable for the username.
+<xmp class='cli'>routes.profile.route = /profile/:username
+routes.profile.module = mymodule
+routes.profile.controller = Index
+routes.profile.action = profile</xmp>
+
+You can access this variable in the controller like this:
+<xmp class='cli'>$username = $this->_params->username; </xmp>
+

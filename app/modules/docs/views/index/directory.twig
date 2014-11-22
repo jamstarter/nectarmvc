@@ -1,0 +1,35 @@
+<br>
+<a href="/docs">Back to Docs</a>
+
+<h2>Directory Structure</h2>
+<p>Here's an overview of the directory structure of Nectar. The default 'docs' modules comes included with the framework.</p>
+<xmp>
+app
+  |_layouts              => All project layouts
+    |_layout.twig        => The layout of the site
+  |_modules              => All of your modules go in this folders
+    |_docs               => Module folder
+      |_configs          => Module Configs
+        |_routes.ini     => Routes for the modules
+      |_controllers      => Controllers for the module
+      |_models           => Models for the module
+      |_db               => Database map folder for your module
+        |_db.yml         => Database map for your module
+      |_views            => Views for your module (Twig)
+  |_application.ini      => Global application configuration (database,api keys, etc)
+  |_routes.ini           => Global routes (combined with module routes)
+cli                      => CLI files
+  |_cli                  => Executable cli command
+  |_cliactions           => All CLI actions go here
+  |_clibootstrap.php     => Boostrap for the CLI
+library                  => System / Third-party libraries
+  |_system               => Nectar System Files
+  |_vendors              => 3rd Party Libraries
+public                   => Public Folder
+  |_.htaccess            => .htaccess file (rewrite rules)
+  |_index.php            => Front Controller
+  |_css                  => CSS files go here
+  |_js                   => JavaScript files go here
+  |_images               => Image files go here
+</xmp>
+<br><br><br>

@@ -1,0 +1,59 @@
+<br>
+<a href="/docs">Back to Docs</a>
+
+<h1>What is application.ini?</h1>
+The <b>application.ini</b> file holds all of the configuration options for your application and all of its environments. This could be database credentials, api keys, or simply variables in your application that should be set differently for different environments. 
+<br><br>
+
+Here is an example application.ini file which holds settings for production and development environments:<br>
+<xmp class='cli'>[production]
+;======================================
+; Database Settings
+;======================================
+resources.db.adapter = PDO_MYSQL
+resources.db.isDefaultAdapter = true
+resources.db.host = localhost
+resources.db.username = dblogin
+resources.db.password = GFG63GVg!f
+resources.db.database = mydatabase
+
+;======================================
+; API Keys
+;======================================
+apis.mandrill.api_key = "SDFGDFHD7786876FSDDFGdsdf"
+apis.facebook.api_key = "fff786s87uidsjkjkdjkhfjkd8988"
+
+[development]
+;======================================
+; Database Settings
+;======================================
+resources.db.adapter = PDO_MYSQL
+resources.db.isDefaultAdapter = true
+resources.db.host = localhost
+resources.db.username = appdev
+resources.db.password = GDF67823!!!XXed
+resources.db.database = devdatabase
+
+;======================================
+; API Keys
+;======================================
+apis.mandrill.api_key = "HHDJGFHJDF887767dGDDFGG"
+apis.facebook.api_key = "kjhjkjk87kjmnsdfhgghd8888888"
+
+</xmp>
+
+<br>
+
+<h2>Accessing Settings From application.ini</h2>
+You can access the settings registered in application.ini from any controller in any module.
+<br><br>
+Here is an example of getting the facebook API key from above:<br>
+<xmp class='cli'>$facebookAPIKey = $this->_config->apis->facebook->api_key; </xmp>
+<br>
+<h2>Accessing Settings Directly</h2>
+Although Nectar will automatically deliver the settings to your controller, if you need to access them directly you can do so like this:
+<xmp class='cli'>//get config
+$config = new Config;
+$application = $config->getConfig();
+$facebookAPIKey =  $application->apis->facebook->api_key; </xmp>
+<br><br><br><br><br>

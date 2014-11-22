@@ -1,5 +1,46 @@
+<br>
+<a href="/docs">Back to Docs</a>
 
-<h1>Setting Up Your Database</h1>
+<h1>Configure Your Database</h1>
+<h2>Database Credentials</h2>
+Edit <b>application.ini</b> and input your database credentials for each environment you will be using.<br>
+<xmp>[production]
+;======================================
+; Production Database Settings
+;======================================
+resources.db.adapter = PDO_MYSQL
+resources.db.isDefaultAdapter = true
+resources.db.host = localhost
+resources.db.username = dbuser
+resources.db.password = **********
+resources.db.database = mydatabase
+
+[staging]
+;======================================
+; Staging Database Settings
+;======================================
+resources.db.adapter = PDO_MYSQL
+resources.db.isDefaultAdapter = true
+resources.db.host = localhost
+resources.db.username = dbuser
+resources.db.password = **********
+resources.db.database = stagedatabase
+
+[development]
+;======================================
+; Staging Database Settings
+;======================================
+resources.db.adapter = PDO_MYSQL
+resources.db.isDefaultAdapter = true
+resources.db.host = localhost
+resources.db.username = dbuser
+resources.db.password = **********
+resources.db.database = developmentdatabase</xmp>
+<br>
+
+
+
+<h2>Table Definitions</h2>
 Setting up your database configuration is easy with Nectar. Each module has a YAML file called <b>db.yml</b> in the 'db' folder that holds the necessary database information for the module.<br><br>
 
 Sample <b>db/db.yml</b>:<br>

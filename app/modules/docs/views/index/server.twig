@@ -1,0 +1,22 @@
+<br>
+<a href="/docs">Back to Docs</a>
+
+<h2>Configure Apache</h2>
+Before you can start to use Nectar, you'll need to setup apache with the proper settings. In your apache configuration file, make sure you have a section that looks like this, pointing to the /public folder. Depending on your operating system, the apache config file will be located in different places. If you are unsure, checkout <a href="http://wiki.apache.org/httpd/DistrosDefaultLayout" target="_blank">http://wiki.apache.org/httpd/DistrosDefaultLayout</a><br>
+<xmp>
+<VirtualHost *:80>
+        ServerName mydomain.com
+        ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/nectar/public
+
+        <Directory /var/www/nectar/public>
+                Options Indexes FollowSymLinks
+                AllowOverride All
+        </Directory>
+</VirtualHost>
+</xmp>
+<br>
+<h3>Enable Mod Rewrite</h3>
+You will also need to enable mod rewrite so you can have configurable URLs:
+<xmp class='cli'>> a2enmod rewrite</xmp>
+<br>
