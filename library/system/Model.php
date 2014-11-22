@@ -19,12 +19,12 @@ class Model{
 
 		$config = new \Doctrine\DBAL\Configuration();
 		$connectionParams = array(
-		    'dbname' => $this->_application->resources->db->database,
-		    'user' => $this->_application->resources->db->username,
-		    'password' => $this->_application->resources->db->password,
-		    'host' => $this->_application->resources->db->host,
-		    'driver' => strtolower($this->_application->resources->db->adapter),
-		);
+			'dbname' => $this->_application->resources->db->database,
+			'user' => $this->_application->resources->db->username,
+			'password' => $this->_application->resources->db->password,
+			'host' => $this->_application->resources->db->host,
+			'driver' => strtolower($this->_application->resources->db->adapter),
+			);
 		$conn = \Doctrine\DBAL\DriverManager::getConnection($connectionParams, $config);
 
 		$this->_rawDb = $conn;

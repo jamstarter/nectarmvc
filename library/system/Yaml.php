@@ -3,7 +3,7 @@
 
 class Yaml{
 	
-use Symfony\Component\Yaml\Yaml;
+	use Symfony\Component\Yaml\Yaml;
 
 
 	function parse($path){
