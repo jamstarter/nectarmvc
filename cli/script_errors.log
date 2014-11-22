@@ -50,3 +50,4 @@ Stack trace:
 #2 /var/www/framework/cli/cli(15): updatedb('testmodule')
 #3 {main}
   thrown in /var/www/framework/library/vendors/Symfony/Component/Yaml/Parser.php on line 78
+[22-Nov-2014 18:49:47 UTC] PHP Notice:  Undefined variable: sampleModel in /var/www/framework/cli/cliactions/generateModule.php on line 68
