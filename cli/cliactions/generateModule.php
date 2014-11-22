@@ -65,7 +65,7 @@ use system\Controller as NectarController;
 class IndexController extends NectarController{
 
 	function index(){
-		$sampleModel = new \\$module\models\MyModel;
+		\$sampleModel = new \\$module\models\SampleModel;
 		\$this->view->name = \$sampleModel->getName();
 	}
 }";
