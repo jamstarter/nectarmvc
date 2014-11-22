@@ -107,7 +107,7 @@ function generateSql($path){
 	if(!is_dir($path)){
 		mkdir($path,0777,true);
 		$contents = "";
-		file_put_contents($path."/db.yaml", $contents);
+		file_put_contents($path."/db.yml", $contents);
 	}
 }
 
