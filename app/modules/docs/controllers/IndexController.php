@@ -9,4 +9,10 @@ class IndexController extends NectarController{
 	function index(){
 		//$this->_layout = 'none';
 	}
+
+	function database(){
+
+	}
+
+	
 }

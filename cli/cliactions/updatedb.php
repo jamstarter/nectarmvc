@@ -59,7 +59,9 @@ function updatedb($module){
 				}
 			}
 		}
-
+		if(count($dbMap['tables']) == 0){
+			die();
+		}
 		foreach($dbMap['tables'] AS $tableName => $tableData){
 			echo $module." : ".$tableName."\n";
 			$mappedColumns = $tableData['columns'];

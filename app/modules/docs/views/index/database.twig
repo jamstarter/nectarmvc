@@ -1,0 +1,39 @@
+
+<h1>Setting Up Your Database</h1>
+Setting up your database configuration is easy with Nectar. Each module has a YAML file called <b>db.yml</b> in the 'db' folder that holds the necessary database information for the module.<br><br>
+
+Sample <b>db/db.yml</b>:<br>
+<xmp class='cli'>tables:
+  usermodule_users:
+    primary_key: id
+    columns:
+      id:
+        type: int(11)
+        extra: auto_increment
+      email: 
+        type: varchar(255)
+      password:
+        type: varchar(255)
+      first_name:
+        type: varchar(255)
+      last_name:
+        type: varchar(255)
+      street: 
+        type: varchar(255)
+      date_created:
+        type: timestamp
+        default: current_timestamp
+
+</xmp><br>
+
+When creating your YAML database definition, use two spaces when you go to new line, not a tab.
+
+<h2>Updating the Database</h2>
+After you've setup your definition, you can run the following script to sync your YAML file with your database schema. If you've changed anything in the YAML file, columns, data types, etc will be updated when you run this script. If you've added a new table it will be created, if you've removed a table, it will be dropped. Before a table is dropped, you will be prompted to confirm so you don't accidentally drop a table you need.
+
+<br><br>This will update all modules.
+<xmp class='cli'>> ./cli updatedb all</xmp>
+<br><br>
+If you only want to update the tables for one module, you can include the module name. Here is an example for a module called 'mymodule':
+<xmp class='cli'>> ./cli updatedb mymodule</xmp>
+<br><br><br>

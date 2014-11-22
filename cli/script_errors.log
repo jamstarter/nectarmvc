@@ -81,3 +81,6 @@ Stack trace:
 [22-Nov-2014 19:38:34 UTC] PHP Fatal error:  Call to undefined method Doctrine\DBAL\Driver\PDOStatement::exec() in /var/www/framework/cli/cliactions/updatedb.php on line 51
 [22-Nov-2014 20:19:16 UTC] PHP Notice:  Undefined variable: tableName in /var/www/framework/cli/cliactions/updatedb.php on line 36
 [22-Nov-2014 20:19:21 UTC] PHP Notice:  Undefined variable: tableName in /var/www/framework/cli/cliactions/updatedb.php on line 36
+[22-Nov-2014 20:54:04 UTC] PHP Warning:  Invalid argument supplied for foreach() in /var/www/framework/cli/cliactions/updatedb.php on line 43
+[22-Nov-2014 20:54:06 UTC] PHP Warning:  Invalid argument supplied for foreach() in /var/www/framework/cli/cliactions/updatedb.php on line 63
+[22-Nov-2014 20:55:16 UTC] PHP Warning:  Invalid argument supplied for foreach() in /var/www/framework/cli/cliactions/updatedb.php on line 43
