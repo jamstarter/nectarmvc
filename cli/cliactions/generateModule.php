@@ -36,8 +36,8 @@ function generateModule($name){
 	generateRoutes($folder."/configs",$moduleName);
 
 	//create Sql Folder
-	echo "Creating Folder for SQL... \n";
-	generateSql($folder."/sql",$moduleName);
+	echo "Creating Folder for Database Maps... \n";
+	generateSql($folder."/db",$moduleName);
 
 	$endTime = time();
 

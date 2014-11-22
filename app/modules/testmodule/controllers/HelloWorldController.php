@@ -17,5 +17,7 @@ class HelloWorldController extends Controller{
 	function ryan(){
 
 	}
+	function helloworld(){
 
+	}
 }

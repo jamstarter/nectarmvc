@@ -22,7 +22,7 @@ if(count($argv) > 1){
 /_/ |_/\___/\___/\__/\__,_/_/     
                                 
 \033[1;30;32mCLI Command Line Interface for Nectar \033[0m
-To run a command, type 'php cli.php [commandName]' then hit Enter
+To run a command, type './cli [commandName]' then hit Enter
 \n
 Available Commands: \n";
    
