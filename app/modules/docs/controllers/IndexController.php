@@ -10,9 +10,40 @@ class IndexController extends NectarController{
 		//$this->_layout = 'none';
 	}
 
+	function directory(){
+
+	}
+
 	function database(){
 
 	}
 
-	
+	function server(){
+
+	}
+
+	function environment(){
+
+	}
+
+	function helpers(){
+
+	}
+
+	function cli(){
+
+	}
+
+	function generatemodule(){
+
+	}
+
+	function routes(){
+
+	}
+
+	function appini(){
+		
+	}
+
 }

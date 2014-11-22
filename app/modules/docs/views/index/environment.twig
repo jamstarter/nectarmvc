@@ -1,0 +1,11 @@
+<br>
+<a href="/docs">Back to Docs</a>
+
+<h2>Configure Your Environments</h2>
+You can setup your application to run under different environments. This helps if you want to develop using different settings than your production application, setup a staging server, or if you have multiple developers who all want their own settings. To setup your environment, you'll need to add a file called "environment.conf" beside the top-level directory for your application. This means if your Nectar installation is at /var/www/nectar, the the environment.conf file should reside at /var/www/environment.conf. This will keep the environment.conf file from being committed into version control with the rest of your codebase. If you choose not to configure your environment, it will default to 'production'.
+<br><br>
+
+The <b>environment.conf</b> file should have the name of the environment and nothing else.
+<br><br>
+<b>Sample environment.conf file:</b>
+<xmp class='cli'>production</xmp>
