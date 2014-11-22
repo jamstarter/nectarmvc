@@ -1,13 +1,16 @@
 <?php
+namespace system;
 
-include_once(APPLICATION_PATH.'/library/vendors/Zend/Db.php');
+
+
+
 class Model{
 
 	public $_db;
 
 	function __construct(){
 		//get config
-		$config = new Config;
+		$config = new \system\Config;
 		$application = $config->getConfig();
 
 		$settings = (object) array();
@@ -17,14 +20,18 @@ class Model{
 		}
 		$this->_application = (object) $settings;
 
-		$db = Zend_Db::factory($this->_application->resources->db->adapter, array(
-			'host'             => $this->_application->resources->db->host,
-			'username'         => $this->_application->resources->db->username,
-			'password'         => $this->_application->resources->db->password,
-			'dbname'           => $this->_application->resources->db->database
-		));
+		$config = new \Doctrine\DBAL\Configuration();
+		$connectionParams = array(
+		    'dbname' => $this->_application->resources->db->database,
+		    'user' => $this->_application->resources->db->username,
+		    'password' => $this->_application->resources->db->password,
+		    'host' => $this->_application->resources->db->host,
+		    'driver' => strtolower($this->_application->resources->db->adapter),
+		);
+		$conn = \Doctrine\DBAL\DriverManager::getConnection($connectionParams, $config);
 
-		$this->_db = $db;
+
+		$this->_db = $conn->createQueryBuilder();
 	}
 
 }

@@ -103,6 +103,7 @@ function autoloader($class_paths = NULL, $use_base_dir = true)
 
 	if(!\is_array($class_paths)) // autoload class
 	{
+	
 		// class with namespaces, ex: 'MyPack\MyClass' => 'MyPack/MyClass' (directories)
 		$class_path = \str_replace('\\', \DIRECTORY_SEPARATOR, $class_paths);
 
@@ -202,8 +203,13 @@ foreach($module_files AS $moduleName){
 }
 foreach($moduleNames AS $module){
 autoloader(array( 
-      dirname(__FILE__).'/../../app/modules/'.$module.'/controllers', 
-      dirname(__FILE__).'/../../app/modules/'.$module.'/models', 
+      APPLICATION_PATH.'/app/modules/'.$module.'/controllers', 
+      APPLICATION_PATH.'/app/modules',
+      APPLICATION_PATH.'/app/modules/'.$module,
+      APPLICATION_PATH.'/app/modules/'.$module.'/models', 
+      APPLICATION_PATH.'/library/vendors/Doctrine',
+      APPLICATION_PATH.'/library/vendors', 
+      APPLICATION_PATH.'/library',
 )); 
 }
 
@@ -213,4 +219,6 @@ set_include_path(implode(PATH_SEPARATOR, array(
     realpath(APPLICATION_PATH.'/library/vendors'),
     get_include_path(),
 )));
+
+
 

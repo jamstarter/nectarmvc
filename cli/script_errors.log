@@ -14,3 +14,39 @@
 [20-Nov-2014 05:49:55 UTC] PHP Warning:  file_put_contents(/var/www/framework/app/modules/test/views/index/index.twig): failed to open stream: No such file or directory in /var/www/framework/cli/cliactions/generateModule.php on line 79
 [20-Nov-2014 06:14:36 UTC] PHP Notice:  Undefined variable: endTime in /var/www/framework/cli/cliactions/generateModule.php on line 29
 [20-Nov-2014 06:20:40 UTC] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /var/www/framework/cli/cliactions/generateModule.php on line 44
+[22-Nov-2014 17:27:31 UTC] PHP Fatal error:  Call to undefined function yaml_parse() in /var/www/framework/cli/cliactions/updatedb.php on line 21
+[22-Nov-2014 17:32:35 UTC] PHP Fatal error:  Call to undefined function spyc_load_file() in /var/www/framework/library/system/Yaml.php on line 6
+[22-Nov-2014 17:34:09 UTC] PHP Strict Standards:  Non-static method Spyc::loadFile() should not be called statically, assuming $this from incompatible context in /var/www/framework/library/system/Yaml.php on line 6
+[22-Nov-2014 17:34:09 UTC] PHP Fatal error:  Call to undefined method Yaml::__load() in /var/www/framework/library/vendors/yaml/Spyc.php on line 131
+[22-Nov-2014 17:37:55 UTC] PHP Fatal error:  Class 'Symfony\Component\Yaml\Yaml' not found in /var/www/framework/cli/cliactions/updatedb.php on line 23
+[22-Nov-2014 17:39:25 UTC] PHP Fatal error:  Class 'Symfony\Component\Yaml\Yaml' not found in /var/www/framework/cli/cliactions/updatedb.php on line 23
+[22-Nov-2014 17:39:28 UTC] PHP Fatal error:  Class 'Symfony\Component\Yaml\Yaml' not found in /var/www/framework/cli/cliactions/updatedb.php on line 23
+[22-Nov-2014 17:40:46 UTC] PHP Fatal error:  Class 'Symfony\Component\Yaml\Yaml' not found in /var/www/framework/cli/cliactions/updatedb.php on line 23
+[22-Nov-2014 17:43:46 UTC] PHP Warning:  file_get_contents(/var/www/framework/apps/modules/testmodule/db/db.yaml): failed to open stream: No such file or directory in /var/www/framework/cli/cliactions/updatedb.php on line 24
+[22-Nov-2014 17:44:08 UTC] PHP Warning:  file_get_contents(/var/www/framework/apps/modules/testmodule/db/db.yaml): failed to open stream: No such file or directory in /var/www/framework/cli/cliactions/updatedb.php on line 24
+[22-Nov-2014 17:45:33 UTC] PHP Warning:  file_get_contents(/var/www/framework/apps/modules/testmodule/db/db.yaml): failed to open stream: No such file or directory in /var/www/framework/cli/cliactions/updatedb.php on line 24
+[22-Nov-2014 17:46:40 UTC] PHP Warning:  file_get_contents(/var/www/framework/apps/modules/testmodule/db/db.yaml): failed to open stream: No such file or directory in /var/www/framework/cli/cliactions/updatedb.php on line 24
+[22-Nov-2014 17:46:59 UTC] PHP Warning:  file_get_contents(/var/www/framework/apps/modules/testmodule/db/db.yaml): failed to open stream: No such file or directory in /var/www/framework/cli/cliactions/updatedb.php on line 23
+[22-Nov-2014 17:47:18 UTC] PHP Warning:  file_get_contents(/var/www/framework/apps/modules/testmodule/db/db.yaml): failed to open stream: No such file or directory in /var/www/framework/cli/cliactions/updatedb.php on line 23
+[22-Nov-2014 17:47:47 UTC] PHP Warning:  include(/var/www/framework/apps/modules/testmodule/db/db.yaml): failed to open stream: No such file or directory in /var/www/framework/cli/cliactions/updatedb.php on line 22
+[22-Nov-2014 17:47:47 UTC] PHP Warning:  include(): Failed opening '/var/www/framework/apps/modules/testmodule/db/db.yaml' for inclusion (include_path='/var/www/framework/library/vendors:.:/usr/share/php:/usr/share/pear') in /var/www/framework/cli/cliactions/updatedb.php on line 22
+[22-Nov-2014 17:47:47 UTC] PHP Warning:  file_get_contents(/var/www/framework/apps/modules/testmodule/db/db.yaml): failed to open stream: No such file or directory in /var/www/framework/cli/cliactions/updatedb.php on line 23
+[22-Nov-2014 17:48:05 UTC] PHP Warning:  file_get_contents(/var/www/framework/apps/modules/testmodule/db/db): failed to open stream: No such file or directory in /var/www/framework/cli/cliactions/updatedb.php on line 23
+[22-Nov-2014 17:48:24 UTC] PHP Warning:  file_get_contents(/var/www/framework/apps/modules/testmodule/db/database.yaml): failed to open stream: No such file or directory in /var/www/framework/cli/cliactions/updatedb.php on line 23
+[22-Nov-2014 17:48:49 UTC] PHP Warning:  file_get_contents(/var/www/framework/apps/modules/testmodule/data/database.yaml): failed to open stream: No such file or directory in /var/www/framework/cli/cliactions/updatedb.php on line 23
+[22-Nov-2014 17:49:15 UTC] PHP Warning:  file_get_contents(/var/www/framework/apps/modules/testmodule/db/db.yaml): failed to open stream: No such file or directory in /var/www/framework/cli/cliactions/updatedb.php on line 23
+[22-Nov-2014 17:50:03 UTC] PHP Warning:  file_get_contents(/var/www/framework/apps/modules/ryan/db/db.yaml): failed to open stream: No such file or directory in /var/www/framework/cli/cliactions/updatedb.php on line 23
+[22-Nov-2014 17:51:06 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Yaml\Exception\ParseException' with message 'Unable to parse at line 1 (near "test:one").' in /var/www/framework/library/vendors/Symfony/Component/Yaml/Parser.php:287
+Stack trace:
+#0 /var/www/framework/library/vendors/Symfony/Component/Yaml/Yaml.php(67): Symfony\Component\Yaml\Parser->parse('test:one??', false, false)
+#1 /var/www/framework/cli/cliactions/updatedb.php(24): Symfony\Component\Yaml\Yaml::parse('test:one??')
+#2 /var/www/framework/cli/cli(15): updatedb('testmodule')
+#3 {main}
+  thrown in /var/www/framework/library/vendors/Symfony/Component/Yaml/Parser.php on line 287
+[22-Nov-2014 17:51:51 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Yaml\Exception\ParseException' with message 'A YAML file cannot contain tabs as indentation at line 2 (near "	table: testusers").' in /var/www/framework/library/vendors/Symfony/Component/Yaml/Parser.php:78
+Stack trace:
+#0 /var/www/framework/library/vendors/Symfony/Component/Yaml/Yaml.php(67): Symfony\Component\Yaml\Parser->parse('tables:??table:...', false, false)
+#1 /var/www/framework/cli/cliactions/updatedb.php(24): Symfony\Component\Yaml\Yaml::parse('tables:??table:...')
+#2 /var/www/framework/cli/cli(15): updatedb('testmodule')
+#3 {main}
+  thrown in /var/www/framework/library/vendors/Symfony/Component/Yaml/Parser.php on line 78

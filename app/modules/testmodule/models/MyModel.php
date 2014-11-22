@@ -1,23 +1,18 @@
 <?php
+namespace testmodule\models;
+use system\Model as NectarModel;
 
-class MyModel extends Model{
+class MyModel extends NectarModel{
 
 	protected $_name = "users";
 
 	function testDb(){
-		$select = $this->_db->select()
-                        ->from($this->_name);
-        $result = $this->_db->fetchAll($select);
-        return $result;
-		
+		$select = $this->_db->select('*')
+           ->from($this->_name)
+           ->execute();
+           return $select->fetchAll();
 	}
 
-	public function getById($id){
-        $select = $this->_db->select()
-                        ->from($this->_name)
-                        ->where('id=?',$id);
-        $result = $this->_db->fetchRow($select);
-        return $result;
-    }
+
 
 }
