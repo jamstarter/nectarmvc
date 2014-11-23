@@ -12,7 +12,11 @@ foreach($actions AS $file){
 //Run function or provide help
 if(count($argv) > 1){
 
-    $argv[1](@$argv[2]);
+  if(count($argv) > 2){
+    $argv[1](@$argv[2],@$argv[3]);
+  } else {
+    $argv[1](@$argv[2]); 
+  }
 } else {
    echo "      
     _   __          __            

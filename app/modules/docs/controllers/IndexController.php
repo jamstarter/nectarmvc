@@ -46,4 +46,8 @@ class IndexController extends NectarController{
 		
 	}
 
+	function firstmodule(){
+		
+	}
+
 }

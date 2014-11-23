@@ -41,6 +41,8 @@ class Controller{
 		
 		$this->_application = $application;
 
+		$this->_isPost = !empty($_POST);
+
 	}
 
 	function setViewPath($path){
@@ -70,6 +72,10 @@ class Controller{
 			echo $content;
 		}
 
+	}
+
+	function redirect($to){
+		header('Location: '.$to);
 	}
 
 }

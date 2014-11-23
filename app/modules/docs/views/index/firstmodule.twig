@@ -1,0 +1,361 @@
+<h1>Build Your First Module</h1>
+This short tutorial will take you through the steps of creating your first module. I am assuming you already have Nectar installed and configured on your web server or local development environment. If not, please see the other <a href="/docs">documentation</a> before proceeding with this tutorial.
+<br>
+<h2>What are we building?</h2>
+In this tutorial, we are going to build a simple module which handles user registration and login on our website. In order to accomplish this, we will need a database table, a registration page, a login page and a url to use to log the user out.
+
+<h2>Generate the Module</h2>
+The first step is to generate our module. We'll call this module 'userauth'. 'cd' into your Nectar installation's /cli directory and type the following:
+<xmp class='cli'>> ./cli generateModule userauth</xmp>
+If everything works, you should see a response like this:<br>
+<xmp class='cli'>Generating Module userauth... 
+
+Creating Directory... 
+Creating Controller... 
+Creating Model... 
+Creating View... 
+Creating Routes... 
+Creating Folder for Database Maps... 
+userauth created in /var/www/framework/app/modules/userauth 
+Complete.
+
+Navigate to /userauth/index to view your new module!</xmp>
+<b>SWEET!</b> We have the skeleton for our module now!
+
+<h2>Creating the Database Table</h2>
+For the purposes of this exercise, we will only require generic information about a user. We want to collect their first and last names, email address and have them set a password. We want to create a database table that will hold this information. To do this, we need to define the table in the app/nodules/userauth/db/db.yml file.
+<br><br>
+<b>app/modules/userauth/db/db.yml:</b>
+<xmp class='cli'>tables:
+  userauth_users:
+    primary_key: id
+    columns:
+      id:
+        type: int(11)
+        extra: auto_increment
+      email: 
+        type: varchar(255)
+      password:
+        type: varchar(255)
+      first_name:
+        type: varchar(255)
+      last_name:
+        type: varchar(255)
+      date_created:
+        type: timestamp
+        default: current_timestamp
+</xmp>
+
+Now that we've defined our table, we need to create it by running the 'updatedb' command for the 'userauth' module.
+<xmp class='cli'>> ./cli updatedb userauth</xmp>
+
+You should see the following output:
+<xmp class='cli'>Updating DB for userauth...
+userauth : userauth_users
+Creating new table userauth_users....</xmp>
+
+Now a table called userauth_users exists in your database!
+
+<h2>Creating a Model</h2>
+The next thing we want to do is create a model we can use to access the data in the table we've just created. Models are our way of "talking" to the database to send and retrieve data. Luckily, its easy to generate model from the command line.<br>
+<br>
+Generate a model from the command line like this (userauth is the module name, userauth_users is the database table name from db.yml):
+<xmp class='cli'>> ./cli generateModel userauth userauth_users</xmp>
+If you look in the models folder now, you'll see a new file called UserauthUsers.php!<br><br>
+
+<b>/app/modules/userauth/models/UserauthUsers.php</b><br>
+<xmp class='cli'><?php
+namespace userauth\models;
+use system\Model as NectarModel;
+
+class UserauthUsers extends NectarModel{
+
+	public $_name = 'userauth_users';
+
+	function getById($id){
+		$select = $this->_db->select('*')
+			->from($this->_name)
+			->where('id=$id')
+			->execute();
+		return $select->fetch();
+	}
+}</xmp>
+
+There's already one function in there called 'getById()'. This is just to be helpful since Nectar assumes that the primary key in your table will be called 'id'. You can edit or delete this method if you like. We'll come back to this model later, but for now, lets move on to our views.
+<br>
+
+<h2>Creating Our Views</h2>
+We need two views for this exercise - a login form and a registration form. Before we can jump in and create our views, we need to setup our routes and controller methods for the views. In Nectar, each page or "view" is represented by an entry in the routes.ini file of the module, a method in a controller in the module, and a twig file that holds the actual HTML of the view.
+<br><br>
+Start by defining your routes in routes.ini (you can replace the generated route that is already there):<br><br>
+
+<b>/app/modules/userauth/configs/routes.ini</b><br>
+<xmp class='cli'>routes.userauthregister.route = /register
+routes.userauthregister.module = userauth
+routes.userauthregister.controller = Index
+routes.userauthregister.action = register
+
+routes.userauthlogin.route = /login
+routes.userauthlogin.module = userauth
+routes.userauthlogin.controller = Index
+routes.userauthlogin.action = login
+
+routes.userauthlogout.route = /logout
+routes.userauthlogout.module = userauth
+routes.userauthlogout.controller = Index
+routes.userauthlogout.action = logout</xmp>
+
+<br>
+
+Next we need to add a method to the IndexController for each of our views. Notice that when you registered the routes, you provided and action name. This should match the name of the method in your controller.
+<br><br>
+
+<b>/app/modules/userauth/controllers/IndexController.php</b><br>
+<xmp class='cli'><?php
+namespace userauth\controllers;
+use system\Controller as NectarController;
+
+class IndexController extends NectarController{
+
+	//register a user
+	function register(){
+
+	}
+
+	//user login
+	function login(){
+
+	}
+
+	//user logout
+	function logout(){
+
+	}
+}</xmp>
+
+The last step is creating twig files for each view. The filename of the twig files should match the action name in the routes entry.
+
+<br><br>
+<img src="/images/register_ss.png"><br>
+<b>/app/modules/userauth/views/index/register.twig</b><br>
+<xmp class='cli'><style type='text/css'>
+	.col-md-12{
+		margin-bottom:10px;
+	}
+	.error{
+		color:red;
+		text-align:center;
+	}
+</style>
+<div class='col-md-5' style='float:none; margin:auto;'>
+	<div class='col-md-12'>
+		<h1>Register</h1>
+	</div>
+	<form method='post' action='/register'>
+	{% if error is defined %}
+		<div class='error'>{{error}}</div>
+	{% endif %}
+		<div class='col-md-12'>
+			<input type='text' class='form-control' name='first_name' placeholder="First Name">
+		</div>	
+
+		<div class='col-md-12'>
+			<input type='text' class='form-control' name='last_name' placeholder="Last Name">
+		</div>	
+
+		<div class='col-md-12'>
+			<input type='text' class='form-control' name='email' placeholder="Email Address">
+		</div>	
+
+		<div class='col-md-12'>
+			<input type='password' class='form-control' name='password' placeholder="Password">
+		</div>
+
+		<div class='col-md-12'>
+			<input type='submit' class='btn btn-block btn-danger btn-lg' value="Create An Account">
+		</div>		
+	</form>
+</div></xmp>
+<br><br>
+<img src="/images/login_ss.png"><br>
+<b>/app/modules/userauth/views/index/login.twig</b><br>
+<xmp class='cli'><style type='text/css'>
+	.col-md-12{
+		margin-bottom:10px;
+	}
+	.error{
+		color:red;
+		text-align:center;
+	}
+</style>
+<div class='col-md-5' style='float:none; margin:auto;'>
+	<div class='col-md-12'>
+		<h1>Sign In</h1>
+	</div>
+	<form method='post' action='/login'>
+		{% if error is defined %}
+			<div class='error'>{{error}}</div>
+		{% endif %}
+		<div class='col-md-12'>
+			<input type='text' class='form-control' name='email' placeholder="Email Address">
+		</div>	
+		<div class='col-md-12'>
+			<input type='password' class='form-control' name='password' placeholder="Password">
+		</div>
+		<div class='col-md-12'>
+			<input type='submit' class='btn btn-block btn-danger btn-lg' value="Sign In">
+		</div>		
+	</form>
+</div></xmp>
+
+<br>
+<h2>Registering a User</h2>
+Now we need to update the register function in IndexController.php and add a couple of functions to UserauthUser.php to process the information from the registration form:<br>
+<xmp class='cli'>//register a user
+function register(){
+
+	if($this->_isPost){
+		$error = false;
+
+		//get model for user table
+		$userAuthModel = new \userauth\models\UserauthUsers;
+
+		//validate fields
+		if(trim($this->_params->first_name) == ''){
+			$error = "Please provide first name";
+		}
+		if(trim($this->_params->last_name) == ''){
+			$error = "Please provide last name";
+		}
+		if(trim($this->_params->email) == ''){
+			$error = "Please provide email";
+		}
+		if (!filter_var(trim($this->_params->email), FILTER_VALIDATE_EMAIL)) {
+			$error = "Email not valid.";
+		}
+		if(trim($this->_params->password) == ''){
+			$error = "Please provide a password";
+		}
+		if($exists = $userAuthModel->exists(trim($this->_params->email))){
+			$error = "Email already in use.";
+		}
+
+		//if no errors, proceed
+		if(!$error){
+			//create user
+			$userAuthModel->createUser($this->_params);
+			//get user id
+			$id = $userAuthModel->_conn->lastInsertId();
+			//get user record from database
+			$user = $userAuthModel->getById($id);
+			//create session for user
+			$_SESSION['user'] = $exists;
+
+		} else {  
+			//send errors to the view
+			$this->view->error = $error;
+		}
+
+	}
+	//if user is logeed in, redirect them
+	if(isset($_SESSION['user'])){
+		$this->redirect("/");
+	}
+}</xmp>
+	<br><br>
+	Add these methods to UserauthUsers.php. exists() checks to see if an email address is already registered. createUser inserts a new user into the database.
+<xmp class='cli'>function exists($email){
+	$select = $this->_db->select('*')
+		->from($this->_name)
+		->where("email='$email'")
+		->execute();
+	return $select->fetch();
+}
+
+function createUser($data){
+	$newData = array();
+	$newData['password'] = sha1($data->password);
+	$newData['first_name'] = $data->first_name;
+	$newData['last_name'] = $data->last_name;
+	$newData['email'] = $data->email;
+	return $this->_conn->insert($this->_name,$newData);
+
+}</xmp>
+<br>
+Your registration form will now register a user in the database and log them in. Go ahead and try it.
+<br>
+
+<h2>Logout</h2>
+We've already added a route for the logout URL and a function to IndexController. Now lets add some code to the logout() function in IndexController so we can log a user out.
+<xmp class='cli'>//log a user out
+function logout(){
+	unset($_SESSION['user']);
+	$this->redirect("/login");
+}</xmp> 
+<br>
+If you registered a user when testing in the previous section, go to /logout in your browser and you will be logged out.
+<br>
+<h2>User Login</h2>
+The last step is to process the login form we created in login.twig. Just like the registration form, we'll need to edit the login() function in IndexController and add a method to the modle to authenticate the user.
+<br><Br>
+Edit the login() function in IndexController.php<br>
+<xmp class='cli'>//user login
+function login(){
+
+	//get model for user table
+	$userAuthModel = new \userauth\models\UserauthUsers;
+
+	if($this->_isPost){
+		$error = 0;
+		if(trim($this->_params->email) == ''){
+			$error = "Please provide email";
+		}
+		if (!filter_var(trim($this->_params->email), FILTER_VALIDATE_EMAIL)) {
+			$error = "Email not valid.";
+		}
+		if(trim($this->_params->password) == ''){
+			$error = "Please provide a password";
+		}
+		if(!$validUser = $userAuthModel->isValid(trim($this->_params->email), sha1(trim($this->_params->password))) ){
+			$error = "Email or password is incorrect.";
+		}
+
+		if(!$error){
+			$_SESSION['user'] = $validUser;
+			$this->redirect("/");
+
+		} else {
+			//send errors to the view
+			$this->view->error = $error;
+		}
+	}
+	//if user is logeed in, redirect them
+	if(isset($_SESSION['user'])){
+		$this->redirect("/");
+	}
+}</xmp>
+
+<br><Br>
+Add a new method to UserauthUsers.php to authenticate the user<br>
+<xmp class='cli'>function isValid($email,$password){
+	$select = $this->_db->select('*')
+		->from($this->_name)
+		->where("email='$email' AND password='$password'")
+		->execute();
+	return $select->fetch();
+}</xmp>
+
+<br>
+<h2>That's It!</h2>
+Now you have a fully functional user authentication module with registration, login and logout. You can drop this module in any project you build on Nectar and customize it further based on the project's needs.
+<br><br>
+Here are your new routes:
+
+<ul>
+	<li><b>/register</b>: Users can create an account</li>
+	<li><b>/login</b>: Users can login with an existing account</li>
+	<li><b>/logout</b>: End a session for a logged in user</li>
+</ul>
+<br><br>
+<a href="/samples/userauth.zip"><input type='button' class='btn btn-danger btn-lg' value="Download Project Files (.zip)"></a>
+<br><br><br><br><br>
