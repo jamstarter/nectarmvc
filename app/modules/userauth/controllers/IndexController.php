@@ -42,7 +42,8 @@ class IndexController extends NectarController{
 				//get user record from database
 				$user = $userAuthModel->getById($id);
 				//create session for user
-				$_SESSION['user'] = $exists;
+				$session = new \system\Session;
+				$session->login($exists);
 
 			} else {  
 				//send errors to the view
@@ -78,7 +79,9 @@ class IndexController extends NectarController{
 			}
 
 			if(!$error){
-				$_SESSION['user'] = $validUser;
+				$session = new \system\Session;
+				$session->login($validUser);
+
 				$this->redirect("/");
 
 			} else {
@@ -94,7 +97,9 @@ class IndexController extends NectarController{
 
 	//log a user out
 	function logout(){
-		unset($_SESSION['user']);
+		$session = new \system\Session;
+		$session->logout();
+
 		$this->redirect("/login");
 	}
 }
