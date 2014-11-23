@@ -1,5 +1,8 @@
 Nectar PHP Framework
 =========
+
+Learn more about Nectar at http://www.nectarmvc.com
+
 Nectar is a modular MVC framework for PHP. It combines commonly used components such as Twig and Doctrine2 with many principles and paradigms found in other frameworks such as Zend, Symfony, Rails, and Django.
 
 Why use Nectar?
