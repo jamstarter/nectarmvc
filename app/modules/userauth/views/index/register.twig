@@ -1,0 +1,38 @@
+<style type='text/css'>
+	.col-md-12{
+		margin-bottom:10px;
+	}
+	.error{
+		color:red;
+		text-align:center;
+	}
+</style>
+<div class='col-md-5' style='float:none; margin:auto;'>
+	<div class='col-md-12'>
+		<h1>Register</h1>
+	</div>
+	<form method='post' action='/register'>
+	{% if error is defined %}
+		<div class='error'>{{error}}</div>
+	{% endif %}
+		<div class='col-md-12'>
+			<input type='text' class='form-control' name='first_name' placeholder="First Name">
+		</div>	
+
+		<div class='col-md-12'>
+			<input type='text' class='form-control' name='last_name' placeholder="Last Name">
+		</div>	
+
+		<div class='col-md-12'>
+			<input type='text' class='form-control' name='email' placeholder="Email Address">
+		</div>	
+
+		<div class='col-md-12'>
+			<input type='password' class='form-control' name='password' placeholder="Password">
+		</div>
+
+		<div class='col-md-12'>
+			<input type='submit' class='btn btn-block btn-danger btn-lg' value="Create An Account">
+		</div>		
+	</form>
+</div>

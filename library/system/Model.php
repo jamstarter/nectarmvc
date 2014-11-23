@@ -8,6 +8,7 @@ class Model{
 
 	public $_db;
 	public $_rawDb;
+	public $_conn;
 
 	function __construct(){
 		//get config
@@ -28,6 +29,7 @@ class Model{
 		$conn = \Doctrine\DBAL\DriverManager::getConnection($connectionParams, $config);
 
 		$this->_rawDb = $conn;
+		$this->_conn = $conn;
 		$this->_db = $conn->createQueryBuilder();
 	}
 

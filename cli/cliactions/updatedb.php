@@ -46,7 +46,9 @@ function updatedb($module){
 				}
 			}
 
-			if($exists == '0'){
+		/*	
+		//disabled for now due to conflicts with modules dropping tables for other modules
+		if($exists == '0'){
 				echo "$existingTableName removed from map, dropping table....\n";
 				$sure = readline("Drop $existingTableName from database? (y/n)\n");
 				if(strtolower($sure) == 'y'){
@@ -58,6 +60,7 @@ function updatedb($module){
 					break(1);
 				}
 			}
+		*/	
 		}
 		if(count($dbMap['tables']) == 0){
 			die();

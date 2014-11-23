@@ -84,3 +84,11 @@ Stack trace:
 [22-Nov-2014 20:54:04 UTC] PHP Warning:  Invalid argument supplied for foreach() in /var/www/framework/cli/cliactions/updatedb.php on line 43
 [22-Nov-2014 20:54:06 UTC] PHP Warning:  Invalid argument supplied for foreach() in /var/www/framework/cli/cliactions/updatedb.php on line 63
 [22-Nov-2014 20:55:16 UTC] PHP Warning:  Invalid argument supplied for foreach() in /var/www/framework/cli/cliactions/updatedb.php on line 43
+[23-Nov-2014 02:35:18 UTC] PHP Warning:  Missing argument 2 for generateModel(), called in /var/www/framework/cli/cli on line 15 and defined in /var/www/framework/cli/cliactions/generateModel.php on line 4
+[23-Nov-2014 02:35:19 UTC] PHP Notice:  Undefined variable: dbtable in /var/www/framework/cli/cliactions/generateModel.php on line 6
+[23-Nov-2014 02:42:01 UTC] PHP Notice:  Undefined variable: id in /var/www/framework/cli/cliactions/generateModel.php on line 17
+[23-Nov-2014 02:42:01 UTC] PHP Notice:  Undefined variable: id in /var/www/framework/cli/cliactions/generateModel.php on line 21
+[23-Nov-2014 02:42:01 UTC] PHP Warning:  file_put_contents(production/app/modules/userauth/models/UserauthUsers.php): failed to open stream: No such file or directory in /var/www/framework/cli/cliactions/generateModel.php on line 24
+[23-Nov-2014 02:42:24 UTC] PHP Notice:  Undefined variable: id in /var/www/framework/cli/cliactions/generateModel.php on line 21
+[23-Nov-2014 02:42:24 UTC] PHP Warning:  file_put_contents(production/app/modules/userauth/models/UserauthUsers.php): failed to open stream: No such file or directory in /var/www/framework/cli/cliactions/generateModel.php on line 24
+[23-Nov-2014 02:43:22 UTC] PHP Warning:  file_put_contents(production/app/modules/userauth/models/UserauthUsers.php): failed to open stream: No such file or directory in /var/www/framework/cli/cliactions/generateModel.php on line 24

@@ -25,7 +25,7 @@ function generateModule($name){
 
 	//create Model
 	echo "Creating Model... \n";
-	generateModel($folder."/models",$moduleName);
+	generateModuleModel($folder."/models",$moduleName);
 
 	//create View
 	echo "Creating View... \n";
@@ -75,7 +75,7 @@ class IndexController extends NectarController{
 	}
 }
 
-function generateModel($path,$module){
+function generateModuleModel($path,$module){
 	$contents="<?php
 namespace $module\models;
 use system\Model as NectarModel;
