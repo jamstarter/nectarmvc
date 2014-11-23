@@ -70,7 +70,7 @@ Sample <b>db/db.yml</b>:<br>
 When creating your YAML database definition, use two spaces when you go to new line, not a tab.
 
 <h2>Updating the Database</h2>
-After you've setup your definition, you can run the following script to sync your YAML file with your database schema. If you've changed anything in the YAML file, columns, data types, etc will be updated when you run this script. If you've added a new table it will be created, if you've removed a table, it will be dropped. Before a table is dropped, you will be prompted to confirm so you don't accidentally drop a table you need.
+After you've setup your definition, you can run the following script to sync your YAML file with your database schema. If you've changed anything in the YAML file, columns, data types, etc will be updated when you run this script. If you've added a new table it will be created, if you've removed a table, you will need to drop it manually. This keeps you from accidentally dropping a table you still need.
 
 <br><br>This will update all modules.
 <xmp class='cli'>> ./cli updatedb all</xmp>
