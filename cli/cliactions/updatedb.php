@@ -33,6 +33,8 @@ function updatedb($module){
 		$dbAdapter = new \system\Model;
 		$db = $dbAdapter->_rawDb;
 
+/*	
+		//disabled for now due to conflicts with modules dropping tables for other modules
 		$sql = "select * from information_schema.columns where table_schema = '".$application->resources->db->database."' ";
 
 		$tables = $db->query($sql)->fetchAll();
@@ -46,8 +48,7 @@ function updatedb($module){
 				}
 			}
 
-		/*	
-		//disabled for now due to conflicts with modules dropping tables for other modules
+		
 		if($exists == '0'){
 				echo "$existingTableName removed from map, dropping table....\n";
 				$sure = readline("Drop $existingTableName from database? (y/n)\n");
@@ -60,10 +61,10 @@ function updatedb($module){
 					break(1);
 				}
 			}
-		*/	
-		}
+		
+		} */
 		if(count($dbMap['tables']) == 0){
-			die();
+			continue;
 		}
 		foreach($dbMap['tables'] AS $tableName => $tableData){
 			echo $module." : ".$tableName."\n";
