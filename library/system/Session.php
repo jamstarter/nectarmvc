@@ -15,5 +15,12 @@ class Session{
 		return $_SESSION['user'];
 	}
 
+	function hasSession(){
+		if(!empty($_SESSION['user'])){
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 }

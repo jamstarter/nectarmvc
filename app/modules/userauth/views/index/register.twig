@@ -12,8 +12,10 @@
 		<h1>Register</h1>
 	</div>
 	<form method='post' action='/register'>
-	{% if error is defined %}
+	{% if errors is defined %}
+		{% for error in errors %}
 		<div class='error'>{{error}}</div>
+		{% endfor %}
 	{% endif %}
 		<div class='col-md-12'>
 			<input type='text' class='form-control' name='first_name' placeholder="First Name">

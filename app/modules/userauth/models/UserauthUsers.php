@@ -31,12 +31,46 @@ class UserauthUsers extends NectarModel{
 	}
 
 	function createUser($data){
-				$newData = array();
-				$newData['password'] = sha1($data->password);
-				$newData['first_name'] = $data->first_name;
-				$newData['last_name'] = $data->last_name;
-				$newData['email'] = $data->email;
-		return $this->_conn->insert($this->_name,$newData);
+		$newData = array();
+		$newData['password'] = sha1($data->password);
+		$newData['first_name'] = $data->first_name;
+		$newData['last_name'] = $data->last_name;
+		$newData['email'] = $data->email;
+		$this->_conn->insert($this->_name,$newData);
+		//get user id
+		$id = $this->_conn->lastInsertId();
+		//get user record from database
+		$user = $this->getById($id);
+		return $user;
+	}
 
+	function validateFields($data,$checkExisting=true){
+
+		$errors = array();
+
+		if(isset($data->first_name) && trim($data->first_name) == ''){
+			$errors[] = "Please provide first name";
+		}
+		if(isset($data->last_name) && trim($data->last_name) == ''){
+			$errors[] = "Please provide last name";
+		}
+		if(trim($data->email) == ''){
+			$errors[] = "Please provide email";
+		}
+		if (!filter_var(trim($data->email), FILTER_VALIDATE_EMAIL)) {
+			$errors[] = "Email not valid.";
+		}
+		if(trim($data->password) == ''){
+			$errors[] = "Please provide a password";
+		}
+		if($checkExisting){
+			if($exists = $this->exists(trim($data->email))){
+				$errors[] = "Email already in use.";
+			}
+		}
+
+		
+		return $errors;
+		
 	}
 }
