@@ -32,6 +32,15 @@
         <li {% if '/docs' in server['REQUEST_URI'] %}class='active'{% endif %}> <a href="/docs">Documentation / Download</a></li>
 
       </ul>
+
+      <ul class='nav navbar-nav navbar-right'>
+        {% if session.user is defined %}
+          <li {% if '/logout' in server['REQUEST_URI'] %}class='active'{% endif %}> <a href="/logout">Logout</a></li>
+        {% else %}
+          <li {% if '/login' in server['REQUEST_URI'] %}class='active'{% endif %}> <a href="/login">Login</a></li>
+          <li {% if '/register' in server['REQUEST_URI'] %}class='active'{% endif %}> <a href="/register">Register</a></li>
+        {% endif %}
+      </ul>
     
       
     </div><!-- /.navbar-collapse -->
