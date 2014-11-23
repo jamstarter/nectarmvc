@@ -249,7 +249,8 @@ function register(){
 			//get user record from database
 			$user = $userAuthModel->getById($id);
 			//create session for user
-			$_SESSION['user'] = $exists;
+			$session = new \system\Session;
+			$session->login($exists);
 
 		} else {  
 			//send errors to the view
@@ -289,7 +290,8 @@ Your registration form will now register a user in the database and log them in.
 We've already added a route for the logout URL and a function to IndexController. Now lets add some code to the logout() function in IndexController so we can log a user out.
 <xmp class='cli'>//log a user out
 function logout(){
-	unset($_SESSION['user']);
+	$session = new \system\Session;
+	$session->logout();
 	$this->redirect("/login");
 }</xmp> 
 <br>
@@ -321,7 +323,8 @@ function login(){
 		}
 
 		if(!$error){
-			$_SESSION['user'] = $validUser;
+			$session = new \system\Session;
+			$session->login($validUser);
 			$this->redirect("/");
 
 		} else {
